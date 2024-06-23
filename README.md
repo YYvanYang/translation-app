@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/create-next-app).
+# Next.js Translation App
 
-## Getting Started
+This project is a Next.js-based web application that provides translation services using OpenAI's GPT models. It supports translation between various languages and can handle both short and long texts efficiently.
 
-First, run the development server:
+## Features
 
-```bash
+- Translate text between multiple languages
+- Support for country-specific language variants
+- Handles long texts by splitting them into manageable chunks
+- Uses OpenAI's GPT models for high-quality translations
+- Implements a two-step translation process with reflection and improvement
+- Built with Next.js 14+, using App Router and Server Actions
+- Styled with Tailwind CSS
+- Utilizes Vercel AI SDK for efficient AI integrations
+
+## Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+- Node.js (v14 or later)
+- npm (v6 or later)
+- An OpenAI API key
+
+## Installation
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/your-username/nextjs-translation-app.git
+   cd nextjs-translation-app
+   ```
+
+2. Install the dependencies:
+   ```
+   npm install
+   ```
+
+3. Create a `.env.local` file in the root directory and add your OpenAI API key:
+   ```
+   OPENAI_API_KEY=your_openai_api_key_here
+   ```
+
+   Note: Next.js has built-in support for environment variables, so you don't need to install any additional packages to use them.
+
+## Usage
+
+To start the development server:
+
+```
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load Inter, a custom Google Font.
+```
+translation-app/
+├── app/
+│   ├── api/
+│   │   └── translate/
+│   │       └── route.js
+│   ├── page.js
+│   └── layout.js
+├── components/
+│   ├── TranslationForm.js
+│   └── TranslationResult.js
+├── lib/
+│   └── translation.js
+├── .env.local
+└── next.config.js
+```
 
-## Learn More
+- `app/`: Contains the main application pages and API routes
+- `components/`: Reusable React components
+- `lib/`: Utility functions and translation logic
+- `.env.local`: Environment variables (not tracked in git)
+- `next.config.js`: Next.js configuration file
 
-To learn more about Next.js, take a look at the following resources:
+## Key Components
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `TranslationForm.js`: Handles user input for source language, target language, country, and text to translate
+- `TranslationResult.js`: Displays the translation result
+- `translation.js`: Contains the core translation logic, including text chunking and OpenAI API interactions
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## API
 
-## Deploy on Vercel
+The application exposes a single API endpoint:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `POST /api/translate`: Accepts translation parameters and returns the translated text
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Environment Variables
+
+This project uses Next.js built-in support for environment variables. You can use `.env.local` for local development and environment-specific files like `.env.production` for production settings. Remember not to commit these files to version control.
+
+## Contributing
+
+Contributions to this project are welcome. Please ensure you follow the existing code style and add unit tests for any new features.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- OpenAI for providing the GPT models
+- Vercel for the Next.js framework and AI SDK
+- The developers of all the open-source libraries used in this project
